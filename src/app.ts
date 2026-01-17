@@ -8,6 +8,7 @@ import paymentRouter from './routes/payment.routes';
 import adminRoutes from './routes/admin.routes';
 import examRoutes from './routes/exam.routes';
 import analyticsRoute from './routes/analytics.route';
+import morgan from 'morgan';
 
 
 const app: Express = express();
@@ -16,6 +17,7 @@ app.use(cors({
     origin: '*', 
     credentials: true,
 }));
+app.use(morgan('dev'));
 
 app.use((req, res, next) => {
     if(req.originalUrl === '/api/v1/webhook'){
